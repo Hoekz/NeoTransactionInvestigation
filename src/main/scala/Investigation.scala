@@ -7,6 +7,8 @@ object Investigation {
 
     if (args.headOption.contains("read-mode")) {
       readNode(session)
+    } else if (args.headOption.contains("setup")) {
+      session.writeTransaction(queries.createNode)
     } else {
       queries.delay = args.headOption.getOrElse("0").toInt
       destroyAndRecreateNode(session)
